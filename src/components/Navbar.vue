@@ -1,18 +1,18 @@
 <template>
-  <main>
+  <section>
     <span>
-      <div class="indicator"></div>
       <router-link to="/" class="nav_link"> Basic Mode </router-link>
+      <div class="indicator"></div>
     </span>
     <span>
+      <router-link to="/e" class="nav_link"> Advanced Mode </router-link>
       <div class="indicator"></div>
-      <router-link to="/" class="nav_link"> Advanced Mode </router-link>
     </span>
-  </main>
+  </section>
 </template>
 
 <style scoped>
-main {
+section {
   display: flex;
   justify-content: flex-end;
   margin-top: 40px;
@@ -22,21 +22,25 @@ main {
   margin-right: 50px;
   font-size: 15.5px;
   padding-right: 90px;
-  color: black;
+  color: rgb(85, 85, 85);
   text-decoration: none;
 }
 
 .indicator {
   width: 30px;
-  height: 4px;
+  height: 1px;
   margin-bottom: 5px;
-  background: rgb(66, 66, 66);
+  background: rgb(119 119 119);
   transition: all 300ms ease-in-out;
 }
 
 .widen {
   transition: all 300ms ease-in-out;
   width: 50px;
+}
+
+.current-link{
+  color: black;
 }
 </style>
 

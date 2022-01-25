@@ -1,4 +1,4 @@
-h3{
+.instruction{
     margin-top: 90px;
     font-size: 30px;
     color: #343434;
@@ -14,26 +14,43 @@ main{
 
 .start-search{
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-top: 30px;
     width: 235px;
     height: 235px;
     border-radius: 100%;
     background: #eeeeee;
     border: solid 1px #ededed;
-    transition: all 200ms ease-in-out;
-    box-shadow:-3px -3px 7px #ffffffb2, 3px 3px 5px rgb(137 142 148 / 95%);
     cursor: pointer;
+    transition: all 250ms ease-in-out;
+    box-shadow:-3px -3px 7px #ffffffb2, 3px 3px 5px rgb(152 155 158 / 95%);
+
 }
 
 .start-search:hover{
-    transition: all 200ms ease-in-out;
-    box-shadow: inset -3px -3px 7px #ffffffb0, 
-    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+    transform: scale(1.04);
+    transition: all 250ms ease-in-out;
 }
+ 
+
 
 .start-icon{
     width: 50%;
     filter: opacity(0.5);
 }
+
+.sets, .reps{
+    height: 1px;
+    width: 210px;
+    background: #cbcbcb;
+}
+.main-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 125px;
+}
+
