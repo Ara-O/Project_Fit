@@ -1,3 +1,39 @@
 h3{
-    margin-top: 20px;
+    margin-top: 90px;
+    font-size: 30px;
+    color: #343434;
+    font-family: "Poppins Medium";
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.start-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 235px;
+    height: 235px;
+    border-radius: 100%;
+    background: #eeeeee;
+    border: solid 1px #ededed;
+    transition: all 200ms ease-in-out;
+    box-shadow:-3px -3px 7px #ffffffb2, 3px 3px 5px rgb(137 142 148 / 95%);
+    cursor: pointer;
+}
+
+.start-search:hover{
+    transition: all 200ms ease-in-out;
+    box-shadow: inset -3px -3px 7px #ffffffb0, 
+    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+}
+
+.start-icon{
+    width: 50%;
+    filter: opacity(0.5);
 }
