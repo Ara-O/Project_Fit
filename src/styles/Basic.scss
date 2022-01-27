@@ -27,6 +27,7 @@ main{
     cursor: pointer;
     transition: all 250ms ease-in-out;
     box-shadow:-3px -3px 7px #ffffffb2, 3px 3px 5px rgb(152 155 158 / 95%);
+    text-align: center;
 
 }
 
@@ -42,11 +43,13 @@ main{
     filter: opacity(0.5);
 }
 
-.sets, .reps{
+
+.line{
     height: 1px;
     width: 210px;
     background: #cbcbcb;
 }
+
 .main-section{
     display: flex;
     justify-content: center;
@@ -54,3 +57,13 @@ main{
     column-gap: 125px;
 }
 
+
+.sets, .reps{
+    font-size: 30px;
+    color: #535353;
+}
+
+.chosen-exercise{
+    width: 157px;
+    color: #2c2c2c;
+}

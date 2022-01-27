@@ -19,6 +19,7 @@ section {
 }
 
 .nav_link {
+  font-family: "Poppins Regular";
   margin-right: 50px;
   font-size: 15.5px;
   padding-right: 90px;
