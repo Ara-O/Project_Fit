@@ -1,3 +1,19 @@
+
+  @font-face {
+    font-family: "Poppins Medium";
+    src: url('../../public/poppins/Poppins-Medium.ttf');
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url('../../public/poppins/Poppins-Light.ttf');
+  }
+
+  @font-face {
+    font-family: "Poppins Regular";
+    src: url('../../public/poppins/Poppins-Regular.ttf');
+  }
+
 .instruction{
     margin-top: 90px;
     font-size: 30px;
@@ -10,6 +26,7 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 71vh;
 }
 
 .start-search{
@@ -35,7 +52,6 @@ main{
     transform: scale(1.04);
     transition: all 250ms ease-in-out;
 }
- 
 
 
 .start-icon{
@@ -61,9 +77,21 @@ main{
 .sets, .reps{
     font-size: 30px;
     color: #535353;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;  
+    -khtml-user-select: none;  
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+    user-select: none;
 }
 
 .chosen-exercise{
     width: 157px;
     color: #2c2c2c;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;  
+    -khtml-user-select: none;  
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+    user-select: none;
 }

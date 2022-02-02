@@ -5,7 +5,7 @@
       <div class="indicator"></div>
     </span>
     <span>
-      <router-link to="/e" class="nav_link"> Advanced Mode </router-link>
+      <router-link to="/Advanced" class="nav_link"> Advanced Mode </router-link>
       <div class="indicator"></div>
     </span>
   </section>
