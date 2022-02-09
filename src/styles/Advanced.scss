@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "Poppins-EL";
+    src: url("../../public/poppins/Poppins-ExtraLight.ttf");
+  }
+
+  
+  @font-face {
+    font-family: "Poppins Regular";
+    src: url('../../public/poppins/Poppins-Regular.ttf');
+  }
+  
+  .note {
+    width: 667px;
+    line-height: 31px;
+    font-size: 15px;
+    font-family: "Poppins-EL";
+    color: gray;
+    margin-bottom: 33px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 71vh;
+  }
+  
+  .inputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 85px;
+    row-gap: 30px;
+    align-items: center;
+  }
+  
+  .inputs div {
+    height: 216px;
+    flex-direction: column;
+    background: white;
+    width: 217px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
+    box-sizing: border-box;
+    padding: 30px;
+  }
+  
+  .exercise-inputs {
+    text-align: center;
+  }
+  
+  .input h3 {
+    font-size: 17px;
+    width: auto;
+    text-align: center;
+  }
+  
+  .exercise-input {
+    border-width: 0px 0px 1px 0px;
+    width: 113px;
+    margin-top: 11px;
+    border-color: lightgray;
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 30px;
+    color: #606060;
+  }
+  
+  .exercise-input:focus {
+    outline: none;
+  }
+  
+  .workout-btn {
+    background: gray;
+    height: 46px;
+    width: 151px;
+    color: white;
+    font-family: "Poppins";
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #8a8a8a;
+    cursor: pointer;
+    transition: all 200ms linear;
+  }
+  
+  .workout {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .workout-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .arrange-workout {
+    height: auto;
+    width: 1067px;
+    background: white;
+    box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 30px 45px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 73vh;
+    row-gap: 12px;
+    margin-top: 83px;
+    flex-direction: column;
+}
+
+.full-workout{
+    column-gap: 94px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}

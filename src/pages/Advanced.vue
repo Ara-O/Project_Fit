@@ -9,7 +9,7 @@
           placeholder="0"
           ref="numberOfExercises"
           :max="exercises.length"
-          min="0"
+          min="1"
         />
       </div>
       <div class="input">
@@ -20,9 +20,10 @@
         <input
           type="number"
           max="5"
-          min="0"
+          min="1"
+          value="1"
           class="exercise-input"
-          placeholder="0"
+          placeholder="1"
           ref="difficultyRating"
         />
       </div>
@@ -41,120 +42,34 @@
       </button>
     </div>
     <br />
-    <div class="workout">
+    <div class="workout" style="display: none">
       <div class="arrange-workout">
-        <h3>Note: If you can do more, do more! If not, there's no shame in stopping with a few reps/seconds short</h3>
+        <h3 class="note">
+          Note: If you can do more, do more! If not, there's no shame in
+          stopping with a few reps/seconds short
+        </h3>
+        <!-- !Loop through exercises -->
+        <div class="full-workout">
+        <div v-for="exercise in chosenExercises" :key="exercise.id" >
+          <workout :exercise="exercise"></workout>
+        </div>
+        </div>
       </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-@font-face {
-  font-family: "Poppins";
-  src: url("../../public/poppins/Poppins-Light.ttf");
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 71vh;
-}
-
-.inputs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  column-gap: 85px;
-  row-gap: 30px;
-  align-items: center;
-}
-
-.inputs div {
-  height: 216px;
-  flex-direction: column;
-  background: white;
-  width: 217px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
-  box-sizing: border-box;
-  padding: 30px;
-}
-
-.exercise-inputs {
-  text-align: center;
-}
-
-.input h3 {
-  font-size: 17px;
-  width: auto;
-  text-align: center;
-}
-
-.exercise-input {
-  border-width: 0px 0px 1px 0px;
-  width: 113px;
-  margin-top: 11px;
-  border-color: lightgray;
-  text-align: center;
-  font-family: "Poppins";
-  font-size: 30px;
-  color: #606060;
-}
-
-.exercise-input:focus {
-  outline: none;
-}
-
-.workout-btn {
-  background: gray;
-  height: 46px;
-  width: 151px;
-  color: white;
-  font-family: "Poppins";
-  border: none;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0px 0px 3px #8a8a8a;
-  cursor: pointer;
-  transition: all 200ms linear;
-}
-
-.workout {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-}
-
-.workout-btn:hover {
-  transform: scale(1.05);
-}
-
-.arrange-workout {
-  height: 300px;
-  width: 1067px;
-  background: white;
-  box-shadow: -3px -3px 7px #eeeeeeb2, 4px 4px 5px rgb(218 218 219 / 95%);
-  border-radius: 6px;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 73vh;
-  row-gap: 12px;
-  margin-top: 83px;
-  flex-direction: column;
-}
+@import url("../styles/Advanced.scss");
 </style>
 
 <script>
+import workout from "../components/Workout.vue";
 export default {
+  components: {
+    workout,
+  },
+
   data() {
     return {
       exercises: [
@@ -221,13 +136,15 @@ export default {
           }
           exercise.seconds = seconds * difficultyRating;
         }
-
-console.log(exercise)
+        console.log(exercise)
+        this.chosenExercises.push(exercise);
         // -- make sure that each exercise is unique
         // if(this.chosenExercises.length > 1){
         //   for(let i = 0; i <this.chosenExercises)
         // }
       }
+
+      document.querySelector(".workout").style.display = "block";
     },
   },
 };
