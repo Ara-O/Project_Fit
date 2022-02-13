@@ -7,8 +7,7 @@
           type="number"
           class="exercise-input"
           placeholder="0"
-          value="4"
-          ref="numberOfExercises"
+           ref="numberOfExercises"
           :max="exercises.length"
           min="1"
         />
@@ -35,7 +34,6 @@
           class="exercise-input"
           placeholder="0"
           ref="restTime"
-          value="20"
           min="0"
           max="500"
         />
@@ -55,7 +53,7 @@
         <div class="notes">
           <div class="note-information">
             <img
-              src="http://pluspng.com/img-png/png-information-help-info-information-notice-icon-download-png-512.png"
+              src="../assets/help_icon.png"
               alt="Help"
               class="help-icon"
               @mouseover="moreInfo"
@@ -91,7 +89,7 @@
                 {{ exercise.rest }}s
               </h4>
               <img
-                src="http://cdn.onlinewebfonts.com/svg/img_7412.png"
+                src="../assets/clock_icon.png"
                 alt="Clock icon"
                 class="rest-time-clock rest"
               />
