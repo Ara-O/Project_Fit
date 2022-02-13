@@ -8,6 +8,7 @@
       <h3>Seconds: {{ exercise.seconds }}</h3>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -21,13 +22,14 @@ export default {
 box-shadow: -2px -2px 7px #eeeeeeb2, 2px 2px 5px rgb(218 218 219 / 95%); 
    padding: 31px 30px;
     height: auto;
-    width: 248px;
+    width: 229px;
     box-sizing: border-box;
     border-radius: 7px;
 }
 
 .full-exercise h3{
     font-size: 15px;
-    font-family:"Poppins-EL"
+    font-family:"Poppins-EL";
+        letter-spacing: 0.4px;
 }
 </style>

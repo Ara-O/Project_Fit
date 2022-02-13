@@ -15,8 +15,8 @@
 section {
   display: flex;
   justify-content: flex-end;
-  margin-top: 40px;
-}
+    padding-top: 40px;
+    }
 
 .nav_link {
   font-family: "Poppins Regular";

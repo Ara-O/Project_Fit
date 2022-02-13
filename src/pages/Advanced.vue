@@ -7,6 +7,7 @@
           type="number"
           class="exercise-input"
           placeholder="0"
+          value="4"
           ref="numberOfExercises"
           :max="exercises.length"
           min="1"
@@ -34,25 +35,68 @@
           class="exercise-input"
           placeholder="0"
           ref="restTime"
+          value="20"
           min="0"
+          max="500"
         />
       </div>
-      <button @click="formWorkout" class="workout-btn" type="submit">
+      <button
+        @click.once="formWorkout"
+        :disabled="btnIsDisabled"
+         type="submit"
+        :class="btnIsDisabled ? 'disabled-btn' : 'workout-btn'"
+      >
         Create Workout
       </button>
     </div>
     <br />
     <div class="workout" style="display: none">
       <div class="arrange-workout">
-        <h3 class="note">
-          Note: If you can do more, do more! If not, there's no shame in
-          stopping with a few reps/seconds short
-        </h3>
+        <div class="notes">
+          <div class="note-information">
+            <img
+              src="http://pluspng.com/img-png/png-information-help-info-information-notice-icon-download-png-512.png"
+              alt="Help"
+              class="help-icon"
+              @mouseover="moreInfo"
+              @mouseleave="lessInfo"
+            />
+            <div class="more-info">
+              <h3>More info</h3>
+              <hr />
+              <h4>Click the rest period between sets to start a countdown</h4>
+              <hr>
+              <h4>Refresh the page to create another workout!</h4>
+            </div>
+          </div>
+          <h3 class="note">
+            Note: If you can do more, do more! If not, there's no shame in
+            stopping with a few reps/seconds short. Hover over the help icon to
+            the left for more info!
+          </h3>
+        </div>
         <!-- !Loop through exercises -->
         <div class="full-workout">
-        <div v-for="exercise in chosenExercises" :key="exercise.id" >
-          <workout :exercise="exercise"></workout>
-        </div>
+          <div
+            v-for="exercise in chosenExercises"
+            :key="exercise.id"
+            class="exercise-cycle"
+          >
+            <workout :exercise="exercise"></workout>
+            <div class="rest-time rest" @click.once="startRestTimer">
+              <h4
+                style="margin: 0px; font-size: 16px; color: gray"
+                class="rest-time-seconds rest"
+              >
+                {{ exercise.rest }}s
+              </h4>
+              <img
+                src="http://cdn.onlinewebfonts.com/svg/img_7412.png"
+                alt="Clock icon"
+                class="rest-time-clock rest"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -89,15 +133,21 @@ export default {
         { name: "Calf raises", timing: "reps", range: "mid" },
       ],
       chosenExercises: [],
+      restTime: 0,
+      btnIsDisabled: false,
     };
   },
 
   methods: {
     formWorkout() {
+      // this.resetUI();
+      this.btnIsDisabled = true;
+      this.chosenExercises = [];
       // difficultyRating, restTime
       let numOfExercises = this.$refs.numberOfExercises.value;
       let difficultyRating = this.$refs.difficultyRating.value;
-      let restTime = this.$refs.restTime.value;
+      let restTime = (this.restTime = this.$refs.restTime.value);
+
       let currentExercise, exercise, randomNo;
       for (let i = 0; i < numOfExercises; i++) {
         currentExercise = {};
@@ -105,6 +155,7 @@ export default {
         exercise = this.exercises[randomNo];
         currentExercise.name = exercise.name;
         currentExercise.timing = exercise.timing;
+        exercise.rest = restTime;
         if (exercise.timing === "reps") {
           let range = exercise.range;
           let reps = 0;
@@ -136,15 +187,49 @@ export default {
           }
           exercise.seconds = seconds * difficultyRating;
         }
-        console.log(exercise)
+        console.log(exercise);
         this.chosenExercises.push(exercise);
-        // -- make sure that each exercise is unique
-        // if(this.chosenExercises.length > 1){
-        //   for(let i = 0; i <this.chosenExercises)
-        // }
       }
 
       document.querySelector(".workout").style.display = "block";
+    },
+
+    moreInfo() {
+      document.querySelector(".more-info").style.display = "flex";
+    },
+
+    lessInfo() {
+      document.querySelector(".more-info").style.display = "none";
+    },
+
+    stopTimer() {
+      console.log("ber");
+    },
+
+    startRestTimer(e) {
+      console.log("start timer");
+      let currentRestTime = e.target;
+      let restTimeSeconds = currentRestTime.children[0];
+      if (currentRestTime.classList.contains("rest")) {
+        let secondsElement_div = currentRestTime.closest("div");
+        let secondsElement = secondsElement_div.querySelector("h4");
+        let seconds = parseInt(secondsElement.textContent);
+
+        seconds--;
+        secondsElement.textContent = `${seconds}s`;
+
+        let timerInterval = window.setInterval(() => {
+          if (seconds > 0) {
+            seconds--;
+            secondsElement.textContent = `${seconds}s`;
+          } else {
+            console.log("bg");
+            secondsElement_div.style.background = "#cfcfcf";
+            secondsElement.style.color = "white";
+            clearInterval(timerInterval);
+          }
+        }, 1000);
+      }
     },
   },
 };
