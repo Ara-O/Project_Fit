@@ -7,7 +7,7 @@
           type="number"
           class="exercise-input"
           placeholder="0"
-           ref="numberOfExercises"
+          ref="numberOfExercises"
           :max="exercises.length"
           min="1"
         />
@@ -39,9 +39,9 @@
         />
       </div>
       <button
-        @click.once="formWorkout"
+        @click="formWorkout"
         :disabled="btnIsDisabled"
-         type="submit"
+        type="submit"
         :class="btnIsDisabled ? 'disabled-btn' : 'workout-btn'"
       >
         Create Workout
@@ -63,7 +63,7 @@
               <h3>More info</h3>
               <hr />
               <h4>Click the rest period between sets to start a countdown</h4>
-              <hr>
+              <hr />
               <h4>Refresh the page to create another workout!</h4>
             </div>
           </div>
@@ -139,57 +139,65 @@ export default {
   methods: {
     formWorkout() {
       // this.resetUI();
-      this.btnIsDisabled = true;
       this.chosenExercises = [];
       // difficultyRating, restTime
       let numOfExercises = this.$refs.numberOfExercises.value;
       let difficultyRating = this.$refs.difficultyRating.value;
-      let restTime = (this.restTime = this.$refs.restTime.value);
-
-      let currentExercise, exercise, randomNo;
-      for (let i = 0; i < numOfExercises; i++) {
-        currentExercise = {};
-        randomNo = Math.floor(Math.random() * this.exercises.length);
-        exercise = this.exercises[randomNo];
-        currentExercise.name = exercise.name;
-        currentExercise.timing = exercise.timing;
-        exercise.rest = restTime;
-        if (exercise.timing === "reps") {
-          let range = exercise.range;
-          let reps = 0;
-          switch (range) {
-            case "low":
-              reps = 5;
-              break;
-            case "mid":
-              reps = 10;
-              break;
-            case "high":
-              reps = 30;
-              break;
+      let restTime = (this.restTime = this.$refs.restTime.value) ? (this.restTime = this.$refs.restTime.value) : 0;
+      if (numOfExercises > 0) {
+        this.btnIsDisabled = true;
+        let currentExercise, exercise, randomNo;
+        for (let i = 0; i < numOfExercises; i++) {
+          currentExercise = {};
+          randomNo = Math.floor(Math.random() * this.exercises.length);
+          exercise = this.exercises[randomNo];
+          currentExercise.name = exercise.name;
+          currentExercise.timing = exercise.timing;
+          exercise.rest = restTime;
+          if (exercise.timing === "reps") {
+            let range = exercise.range;
+            let reps = 0;
+            switch (range) {
+              case "low":
+                reps = 5;
+                break;
+              case "mid":
+                reps = 10;
+                break;
+              case "high":
+                reps = 30;
+                break;
+            }
+            exercise.reps = reps * difficultyRating;
+          } else if (exercise.timing === "seconds") {
+            let seconds = 0;
+            let range = exercise.range;
+            switch (range) {
+              case "low":
+                seconds = 10;
+                break;
+              case "mid":
+                seconds = 30;
+                break;
+              case "high":
+                seconds = 60;
+                break;
+            }
+            exercise.seconds = seconds * difficultyRating;
           }
-          exercise.reps = reps * difficultyRating;
-        } else if (exercise.timing === "seconds") {
-          let seconds = 0;
-          let range = exercise.range;
-          switch (range) {
-            case "low":
-              seconds = 10;
-              break;
-            case "mid":
-              seconds = 30;
-              break;
-            case "high":
-              seconds = 60;
-              break;
-          }
-          exercise.seconds = seconds * difficultyRating;
+          this.chosenExercises.push(exercise);
         }
-        console.log(exercise);
-        this.chosenExercises.push(exercise);
+        document.querySelector(".workout").style.display = "block";
+      } else {
+        document.querySelector(".exercise-inputs h3").style.transform =
+          "scale(1.1)";
+          document.querySelector(".exercise-inputs h3").style.color = "#a63030";
+        window.setTimeout(function () {
+          document.querySelector(".exercise-inputs h3").style.transform =
+            "scale(1)";
+          document.querySelector(".exercise-inputs h3").style.color = "black";
+        }, 1000);
       }
-
-      document.querySelector(".workout").style.display = "block";
     },
 
     moreInfo() {

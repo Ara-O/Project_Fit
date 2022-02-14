@@ -210,4 +210,13 @@ opacity: 1;
   border-radius: 5px;
   box-shadow: 0px 0px 3px #8a8a8a;
   cursor: pointer;
-  transition: all 200ms linear;}
+  transition: all 200ms linear
+}
+
+
+.exercise-inputs h3{
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: all 400ms linear;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
