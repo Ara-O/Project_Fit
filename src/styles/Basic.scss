@@ -1,27 +1,26 @@
-
-  @font-face {
+@font-face {
     font-family: "Poppins Medium";
     src: url('../assets/poppins/Poppins-Medium.ttf');
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: "Poppins";
     src: url('../assets/poppins/Poppins-Light.ttf');
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: "Poppins Regular";
     src: url("../assets/poppins/Poppins-Regular.ttf");
-  }
+}
 
-.instruction{
+.instruction {
     margin-top: 90px;
     font-size: 30px;
     color: #343434;
     font-family: "Poppins Medium";
 }
 
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +29,7 @@ main{
     flex-direction: column;
 }
 
-.start-search{
+.start-search {
     display: flex;
     position: relative;
     justify-content: center;
@@ -44,30 +43,30 @@ main{
     border: solid 1px #ededed;
     cursor: pointer;
     transition: all 250ms ease-in-out;
-    box-shadow:-3px -3px 7px #ffffffb2, 3px 3px 5px rgb(152 155 158 / 95%);
+    box-shadow: -3px -3px 7px #ffffffb2, 3px 3px 5px rgb(152 155 158 / 95%);
     text-align: center;
 
 }
 
-.start-search:hover{
+.start-search:hover {
     transform: scale(1.04);
     transition: all 250ms ease-in-out;
 }
 
 
-.start-icon{
+.start-icon {
     width: 50%;
     filter: opacity(0.5);
 }
 
 
-.line{
+.line {
     height: 1px;
     width: 210px;
     background: #cbcbcb;
 }
 
-.main-section{
+.main-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,24 +74,38 @@ main{
 }
 
 
-.sets, .reps{
+.sets,
+.reps {
     font-size: 30px;
     color: #535353;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none;  
-    -khtml-user-select: none;  
-    -moz-user-select: none;  
-    -ms-user-select: none; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
-.chosen-exercise{
+.chosen-exercise {
     width: 157px;
     color: #2c2c2c;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none;  
-    -khtml-user-select: none;  
-    -moz-user-select: none;  
-    -ms-user-select: none; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
+}
+
+@media (max-width: 560px) {
+    .main-section {
+        flex-wrap: wrap;
+    }
+
+    .instruction {
+        margin-top: 200px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
 }

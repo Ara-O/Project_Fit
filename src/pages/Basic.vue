@@ -12,12 +12,7 @@
       </div>
 
       <div class="start-search" @click="generateExercise">
-        <img
-          src="../assets/start_icon.png"
-          alt="Start icon"
-          class="start-icon"
-          v-if="exerciseGenerated"
-        />
+        <img src="../assets/start_icon.png" alt="Start icon" class="start-icon" v-if="exerciseGenerated" />
         <div v-else>
           <h3 class="chosen-exercise">{{ showExercise }}</h3>
         </div>
@@ -39,6 +34,7 @@
 </style>
 
 <script>
+import exercises from "../utils/exercises"
 export default {
   data() {
     return {
@@ -53,21 +49,7 @@ export default {
       //& timing - mid - 30 - 60
       //& timing - low - 60 - 90
       //second high - 30 - 60 seconds
-      exercises: [
-        { name: "Jumping Jacks", timing: "seconds", range: "high" },
-        { name: "Punches", timing: "seconds", range: "mid" },
-        { name: "Burpees", timing: "seconds", range: "mid" },
-        { name: "Plank", timing: "seconds", range: "mid" },
-        { name: "High Knees", timing: "reps", range: "mid" },
-        { name: "Push-ups", timing: "reps", range: "mid" },
-        { name: "Squats", timing: "reps", range: "high" },
-        { name: "Pull-ups ( or renegade rows )", timing: "reps", range: "low" },
-        { name: "Mountain Climbers", timing: "seconds", range: "high" },
-        { name: "Sit-ups", timing: "reps", range: "mid" },
-        { name: "Squat Jumps", timing: "reps", range: "mid" },
-        { name: "Lunges", timing: "reps", range: "mid" },
-        { name: "Calf raises", timing: "reps", range: "mid" },
-      ],
+      exercises,
       chosenExercise: "",
       rightText: "reps",
       leftText: "sets",
@@ -123,6 +105,8 @@ export default {
       this.sets === 1 ? (this.leftText = "set") : (this.leftText = "sets");
     },
   },
+
+
 
   computed: {
     showExercise() {

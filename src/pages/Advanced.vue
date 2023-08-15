@@ -3,47 +3,22 @@
     <div class="inputs">
       <div class="exercise-inputs input">
         <h3>How many exercises</h3>
-        <input
-          type="number"
-          class="exercise-input"
-          placeholder="0"
-          ref="numberOfExercises"
-          :max="exercises.length"
-          min="1"
-        />
+        <input type="number" class="exercise-input" placeholder="0" ref="numberOfExercises" :max="exercises.length"
+          min="1" />
       </div>
       <div class="input">
         <h3>
           Difficulty rating <br />
           ( 1 - 5 )
         </h3>
-        <input
-          type="number"
-          max="5"
-          min="1"
-          value="1"
-          class="exercise-input"
-          placeholder="1"
-          ref="difficultyRating"
-        />
+        <input type="number" max="5" min="1" value="1" class="exercise-input" placeholder="1" ref="difficultyRating" />
       </div>
       <div class="input">
         <h3>Rest Time <br />( in seconds )</h3>
-        <input
-          type="number"
-          class="exercise-input"
-          placeholder="0"
-          ref="restTime"
-          min="0"
-          max="500"
-        />
+        <input type="number" class="exercise-input" placeholder="0" ref="restTime" min="0" max="500" />
       </div>
-      <button
-        @click="formWorkout"
-        :disabled="btnIsDisabled"
-        type="submit"
-        :class="btnIsDisabled ? 'disabled-btn' : 'workout-btn'"
-      >
+      <button @click="formWorkout" :disabled="btnIsDisabled" type="submit"
+        :class="btnIsDisabled ? 'disabled-btn' : 'workout-btn'">
         Create Workout
       </button>
     </div>
@@ -52,13 +27,8 @@
       <div class="arrange-workout">
         <div class="notes">
           <div class="note-information">
-            <img
-              src="../assets/help_icon.png"
-              alt="Help"
-              class="help-icon"
-              @mouseover="moreInfo"
-              @mouseleave="lessInfo"
-            />
+            <img src="../assets/help_icon.png" alt="Help" class="help-icon" @mouseover="moreInfo"
+              @mouseleave="lessInfo" />
             <div class="more-info">
               <h3>More info</h3>
               <hr />
@@ -75,24 +45,13 @@
         </div>
         <!-- !Loop through exercises -->
         <div class="full-workout">
-          <div
-            v-for="exercise in chosenExercises"
-            :key="exercise.id"
-            class="exercise-cycle"
-          >
+          <div v-for="exercise in chosenExercises" :key="exercise.id" class="exercise-cycle">
             <workout :exercise="exercise"></workout>
             <div class="rest-time rest" @click.once="startRestTimer">
-              <h4
-                style="margin: 0px; font-size: 16px; color: gray"
-                class="rest-time-seconds rest"
-              >
+              <h4 style="margin: 0px; font-size: 16px; color: gray" class="rest-time-seconds rest">
                 {{ exercise.rest }}s
               </h4>
-              <img
-                src="../assets/clock_icon.png"
-                alt="Clock icon"
-                class="rest-time-clock rest"
-              />
+              <img src="../assets/clock_icon.png" alt="Clock icon" class="rest-time-clock rest" />
             </div>
           </div>
         </div>
@@ -107,6 +66,8 @@
 
 <script>
 import workout from "../components/Workout.vue";
+import exercises from "../utils/exercises";
+
 export default {
   components: {
     workout,
@@ -114,22 +75,7 @@ export default {
 
   data() {
     return {
-      exercises: [
-        { name: "Jumping Jacks", timing: "seconds", range: "high" },
-        { name: "Punches", timing: "seconds", range: "mid" },
-        { name: "Burpees", timing: "seconds", range: "mid" },
-        { name: "Plank", timing: "seconds", range: "mid" },
-        { name: "High Knees", timing: "reps", range: "mid" },
-        { name: "Push-ups", timing: "reps", range: "mid" },
-        { name: "Squats", timing: "reps", range: "high" },
-        { name: "Pull-ups ( or renegade rows )", timing: "reps", range: "low" },
-        { name: "Chin-ups", timing: "reps", range: "low" },
-        { name: "Mountain Climbers", timing: "seconds", range: "high" },
-        { name: "Sit-ups", timing: "reps", range: "high" },
-        { name: "Squat Jumps", timing: "reps", range: "low" },
-        { name: "Lunges", timing: "reps", range: "mid" },
-        { name: "Calf raises", timing: "reps", range: "mid" },
-      ],
+      exercises,
       chosenExercises: [],
       restTime: 0,
       btnIsDisabled: false,
@@ -191,7 +137,7 @@ export default {
       } else {
         document.querySelector(".exercise-inputs h3").style.transform =
           "scale(1.1)";
-          document.querySelector(".exercise-inputs h3").style.color = "#a63030";
+        document.querySelector(".exercise-inputs h3").style.color = "#a63030";
         window.setTimeout(function () {
           document.querySelector(".exercise-inputs h3").style.transform =
             "scale(1)";
